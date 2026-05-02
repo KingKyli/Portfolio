@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sotirios Kylintireas-Xydous — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Reset & base ───────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent:   #4A90D9;
+      --aegean:   #1A6B8A;
+      --navy:     #1A2233;
+      --charcoal: #2D3748;
+      --muted:    #718096;
+      --bg:       #FFFFFF;
+      --surface:  #F7F9FC;
+      --border:   #E2E8F0;
+      --radius:   12px;
+      --shadow:   0 4px 24px rgba(0,0,0,0.08);
+      --shadow-hover: 0 8px 40px rgba(74,144,217,0.18);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--charcoal);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ─── Navbar ─────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--navy);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); text-decoration: none; }
+
+    /* ─── Sections common ───────────────────────────────── */
+    section { padding: 80px 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ─── Scroll animations ──────────────────────────────── */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── Hero ───────────────────────────────────────────── */
+    #hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #263556 60%, #1e3a5f 100%);
+      color: #fff;
+      padding: 120px 2rem 100px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .hero-title {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-weight: 300;
+      color: #a0b4cc;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.02em;
+    }
+    .hero-tagline {
+      font-size: 1rem;
+      color: #8aa8c8;
+      max-width: 580px;
+      margin: 0 auto 2.5rem;
+    }
+    .hero-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .hero-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.3rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .hero-link:hover { transform: translateY(-2px); text-decoration: none; }
+    .hero-link.primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(74,144,217,0.4);
+    }
+    .hero-link.primary:hover { box-shadow: 0 6px 24px rgba(74,144,217,0.55); }
+    .hero-link.secondary {
+      background: rgba(255,255,255,0.1);
+      color: #d0e0f0;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .hero-link.secondary:hover { background: rgba(255,255,255,0.15); }
+
+    /* ─── About ──────────────────────────────────────────── */
+    #about { background: var(--surface); }
+    .about-text {
+      font-size: 1.08rem;
+      line-height: 1.85;
+      color: var(--charcoal);
+      max-width: 780px;
+    }
+    .focus-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+    .focus-chip {
+      background: var(--navy);
+      color: #a0c4e8;
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    /* ─── Skills ─────────────────────────────────────────── */
+    #skills { background: var(--bg); }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .skill-group h3 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .chip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--charcoal);
+      padding: 0.3rem 0.85rem;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .chip:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    /* ─── Education ──────────────────────────────────────── */
+    #education { background: var(--surface); }
+    .timeline { position: relative; padding-left: 1.5rem; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: var(--border);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -1.9rem;
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+    .timeline-period {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+    .timeline-school {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .timeline-degree {
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      margin-top: 0.2rem;
+    }
+
+    /* ─── Projects ───────────────────────────────────────── */
+    #projects { background: var(--bg); }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.75rem;
+    }
+    /* Featured card takes full width */
+    .card-featured { grid-column: 1 / -1; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      box-shadow: var(--shadow);
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-4px);
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+    .card-tag {
+      background: rgba(74,144,217,0.1);
+      color: var(--accent);
+      border: 1px solid rgba(74,144,217,0.2);
+      padding: 0.22rem 0.75rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    .card .stack {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .card .stack strong { color: var(--charcoal); }
+    .highlights {
+      margin: 0 0 1rem;
+      padding-left: 1.1rem;
+    }
+    .highlights li {
+      font-size: 0.9rem;
+      color: var(--charcoal);
+      line-height: 1.7;
+      margin-bottom: 0.35rem;
+    }
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .card-link:hover {
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+    }
+    .card-links { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+
+    /* ── GridWorld featured card ── */
+    .card-gridworld {
+      border-top: 4px solid var(--accent);
+    }
+    .card-gridworld .card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .card-gridworld .card-header-left h3 { margin-bottom: 0.25rem; }
+    .featured-badge {
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.85rem;
+      border-radius: 50px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* image gallery 2×2 */
+    .img-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin: 1.25rem 0;
+    }
+    .img-placeholder {
+      background: #e9eef5;
+      border: 2px dashed #c8d5e8;
+      border-radius: 8px;
+      aspect-ratio: 16/10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      cursor: default;
+    }
+    .img-placeholder .cam { font-size: 1.6rem; opacity: 0.5; }
+    .img-placeholder .img-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* algorithms strip */
+    .algo-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.75rem 0 1.25rem;
+    }
+    .algo-chip {
+      background: rgba(74,144,217,0.12);
+      border: 1px solid rgba(74,144,217,0.3);
+      color: var(--accent);
+      padding: 0.28rem 0.85rem;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Aegean Blue card ── */
+    .card-aegean {
+      border-left: 5px solid var(--aegean);
+      background: #f4f9fc;
+    }
+    .card-aegean h3 { color: var(--aegean); }
+    .card-aegean .card-tag {
+      background: rgba(26,107,138,0.1);
+      color: var(--aegean);
+      border-color: rgba(26,107,138,0.25);
+    }
+    .card-aegean .card-link {
+      color: var(--aegean);
+      border-color: var(--aegean);
+    }
+    .card-aegean .card-link:hover { background: var(--aegean); color: #fff; }
+
+    .subsection {
+      margin-bottom: 1rem;
+    }
+    .subsection-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--aegean);
+      margin-bottom: 0.4rem;
+    }
+
+    .tech-list {
+      list-style: none;
+      padding: 0;
+    }
+    .tech-list li {
+      font-size: 0.9rem;
+      color: var(--charcoal);
+      line-height: 1.7;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+    .tech-list li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--aegean);
+      font-size: 0.7rem;
+      top: 0.35em;
+    }
+
+    /* ─── Back to top button ─────────────────────────────── */
+    #back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 200;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(74,144,217,0.4);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    #back-to-top.show {
+      opacity: 1;
+      pointer-events: all;
+    }
+    #back-to-top:hover { transform: translateY(-3px); }
+
+    /* ─── Footer ─────────────────────────────────────────── */
+    footer {
+      background: var(--navy);
+      color: #8aa8c8;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.88rem;
+    }
+    footer strong { color: #d0e4f4; }
+
+    /* ─── Responsive ─────────────────────────────────────── */
+    @media (max-width: 700px) {
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.8rem; }
+      section { padding: 60px 1.25rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .img-gallery { grid-template-columns: 1fr; }
+      #hero { padding: 80px 1.25rem 70px; }
+    }
+    @media (max-width: 480px) {
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Navbar ─────────────────────────────────────────── -->
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="#hero">SK</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#projects">Projects</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ─── Hero ───────────────────────────────────────────── -->
+  <section id="hero">
+    <div class="container">
+      <p class="hero-eyebrow">Technical Portfolio</p>
+      <h1 class="hero-name">Sotirios<br>Kylintireas-Xydous</h1>
+      <p class="hero-title">Computer Science &nbsp;·&nbsp; Systems &nbsp;·&nbsp; Machine Learning &nbsp;·&nbsp; Digital Product Work</p>
+      <p class="hero-tagline">Building things that are both technically grounded and clearly useful.</p>
+      <div class="hero-links">
+        <a class="hero-link primary" href="mailto:skylintireas@gmail.com">
+          <span>✉</span> skylintireas@gmail.com
+        </a>
+        <a class="hero-link secondary" href="https://github.com/KingKyli" target="_blank" rel="noopener">
+          <span>⌥</span> github.com/KingKyli
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── About ──────────────────────────────────────────── -->
+  <section id="about">
+    <div class="container fade-in-up">
+      <p class="section-label">About</p>
+      <h2 class="section-title">Who I Am</h2>
+      <p class="about-text">
+        Computer Science student at the <strong>Athens University of Economics and Business</strong>
+        with a Finance minor at <strong>Deree – The American College of Greece</strong>. My work
+        combines distributed systems, machine learning, data analysis, and real-world digital
+        optimization, with a focus on projects that are both technically grounded and clearly useful.
+      </p>
+      <div class="focus-chips">
+        <span class="focus-chip">Machine Learning</span>
+        <span class="focus-chip">Data Engineering</span>
+        <span class="focus-chip">Backend Systems</span>
+        <span class="focus-chip">C++ Simulation</span>
+        <span class="focus-chip">UX &amp; Website Optimization</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Skills ─────────────────────────────────────────── -->
+  <section id="skills">
+    <div class="container fade-in-up">
+      <p class="section-label">Skills</p>
+      <h2 class="section-title">Tech Stack</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>Languages</h3>
+          <div class="skill-chips">
+            <span class="chip">Java</span>
+            <span class="chip">C++</span>
+            <span class="chip">Python</span>
+            <span class="chip">R</span>
+            <span class="chip">HTML/CSS</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">SQL</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>ML / Data</h3>
+          <div class="skill-chips">
+            <span class="chip">scikit-learn</span>
+            <span class="chip">NumPy</span>
+            <span class="chip">TF-IDF</span>
+            <span class="chip">HuggingFace</span>
+            <span class="chip">DistilBERT</span>
+            <span class="chip">R Markdown</span>
+            <span class="chip">Streamlit</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Backend / Systems</h3>
+          <div class="skill-chips">
+            <span class="chip">TCP Sockets</span>
+            <span class="chip">Android SDK</span>
+            <span class="chip">SQLite / Room</span>
+            <span class="chip">JUnit 5</span>
+            <span class="chip">Gradle</span>
+            <span class="chip">CMake</span>
+            <span class="chip">vcpkg</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Tools &amp; Platforms</h3>
+          <div class="skill-chips">
+            <span class="chip">Git / GitHub</span>
+            <span class="chip">WordPress</span>
+            <span class="chip">Elementor</span>
+            <span class="chip">WPML</span>
+            <span class="chip">Material Design 3</span>
+            <span class="chip">SGG</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Education ──────────────────────────────────────── -->
+  <section id="education">
+    <div class="container fade-in-up">
+      <p class="section-label">Education</p>
+      <h2 class="section-title">Academic Background</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <p class="timeline-period">Current</p>
+          <p class="timeline-school">Athens University of Economics and Business (AUEB)</p>
+          <p class="timeline-degree">BSc Computer Science</p>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-period">Concurrent Minor</p>
+          <p class="timeline-school">Deree – The American College of Greece</p>
+          <p class="timeline-degree">Finance Minor</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Projects ───────────────────────────────────────── -->
+  <section id="projects">
+    <div class="container">
+      <p class="section-label">Selected Projects</p>
+      <h2 class="section-title">Work</h2>
+
+      <div class="projects-grid">
+
+        <!-- ── GridWorld — FEATURED ── -->
+        <div class="card card-featured card-gridworld fade-in-up">
+          <div class="card-header">
+            <div class="card-header-left">
+              <div class="card-tags">
+                <span class="card-tag">C++</span>
+                <span class="card-tag">Simulation</span>
+                <span class="card-tag">SGG</span>
+                <span class="card-tag">Pathfinding</span>
+              </div>
+              <h3>GridWorld — C++ Pathfinding Simulation</h3>
+            </div>
+            <span class="featured-badge">⭐ Featured</span>
+          </div>
+
+          <p>
+            An interactive grid-based simulation / game demo built in C++ with SGG, focused on
+            runtime control, map-driven gameplay, and visible state transitions. It includes setup,
+            live match execution, sandbox editing, score tracking, and winner states — making it a
+            systems-oriented demo rather than a simple graphics exercise.
+          </p>
+
+          <p class="stack"><strong>Stack:</strong> C++, CMake, SGG, vcpkg-based dependency setup</p>
+
+          <div class="algo-strip">
+            <span class="algo-chip">A* Search</span>
+            <span class="algo-chip">BFS</span>
+            <span class="algo-chip">Dijkstra</span>
+            <span class="algo-chip">Heuristic Pathfinding</span>
+          </div>
+
+          <!-- 2×2 image gallery -->
+          <div class="img-gallery">
+            <div class="img-placeholder">
+              <span class="cam">📷</span>
+              <span class="img-label">Screenshot 1 — Setup Screen</span>
+            </div>
+            <div class="img-placeholder">
+              <span class="cam">📷</span>
+              <span class="img-label">Screenshot 2 — Runtime / HUD</span>
+            </div>
+            <div class="img-placeholder">
+              <span class="cam">📷</span>
+              <span class="img-label">Screenshot 3 — Sandbox Edit Mode</span>
+            </div>
+            <div class="img-placeholder">
+              <span class="cam">📷</span>
+              <span class="img-label">Screenshot 4 — Winner State</span>
+            </div>
+          </div>
+
+          <ul class="highlights">
+            <li>Live HUD exposes FPS, elapsed time, remaining targets, CPU mode, score, and A* / search information — turning the demo into an inspectable systems artifact.</li>
+            <li>Supports pause/run, single-step execution, speed changes, restart, next-map switching, and configurable match duration — useful for deterministic debugging as well as gameplay.</li>
+            <li>Includes multiple map styles plus a <strong>sandbox edit mode</strong> where obstacles can be drawn or erased interactively for rapid experimentation.</li>
+            <li>Pathfinding visualiser shows the algorithm's frontier expansion and chosen path in real time, making the search logic transparent and educational.</li>
+          </ul>
+
+          <div class="card-links">
+            <a class="card-link" href="https://github.com/KingKyli/grid-pathfinding-game-cv" target="_blank" rel="noopener">
+              ⌥ GitHub Repository
+            </a>
+          </div>
+        </div>
+
+        <!-- ── Distributed Food Ordering System ── -->
+        <div class="card fade-in-up">
+          <div class="card-tags">
+            <span class="card-tag">Android</span>
+            <span class="card-tag">Java</span>
+            <span class="card-tag">Distributed Systems</span>
+          </div>
+          <h3>Distributed Food Ordering System</h3>
+          <p>
+            A full-stack ordering platform combining a native Android client with a Java TCP
+            backend and SQLite persistence. Designed to showcase real distributed-systems thinking
+            — not just a mobile UI — supporting both customer and partner/manager workflows.
+          </p>
+          <p class="stack">
+            <strong>Stack:</strong> Java 11, Android SDK, TCP Sockets, JSON Protocol, Room/SQLite, Material Design 3, Gradle (Kotlin DSL), JUnit 5
+          </p>
+          <ul class="highlights">
+            <li>Built around raw TCP sockets with a custom JSON protocol, explicit handshake flow, and reconnect handling.</li>
+            <li>Layered architecture (UI → Service → Repository → Protocol) keeps networking, business logic, and presentation clearly separated.</li>
+            <li>Thread-safe basket and socket handling, plus server-side validation for prices, stock, and one-time access-code login.</li>
+            <li>End-to-end: customer browsing/ordering flows <em>and</em> partner portal for inventory and store management.</li>
+          </ul>
+          <div class="card-links">
+            <a class="card-link" href="https://github.com/KingKyli/distributed-food-ordering-system" target="_blank" rel="noopener">⌥ GitHub</a>
+          </div>
+        </div>
+
+        <!-- ── IMDB Sentiment Analysis ── -->
+        <div class="card fade-in-up">
+          <div class="card-tags">
+            <span class="card-tag">ML</span>
+            <span class="card-tag">NLP</span>
+            <span class="card-tag">Python</span>
+            <span class="card-tag">Streamlit</span>
+          </div>
+          <h3>Sentiment Analysis — IMDB Dataset</h3>
+          <p>
+            An end-to-end NLP pipeline for binary sentiment classification on 50,000 IMDB reviews.
+            Upgraded from a course notebook into a portfolio-ready project with reproducible
+            training scripts, benchmarking, a live Streamlit demo, and multilingual Greek inference.
+          </p>
+          <p class="stack">
+            <strong>Stack:</strong> Python, scikit-learn, TF-IDF, Logistic Regression, Streamlit, HuggingFace/DistilBERT, NumPy
+          </p>
+          <ul class="highlights">
+            <li>Implemented Bernoulli Naive Bayes and Logistic Regression from scratch in NumPy to demonstrate understanding of underlying methods.</li>
+            <li>Added DistilBERT as a reference benchmark, with explicit documentation of why it was not selected for deployment.</li>
+            <li>Live demo with evaluation artifacts: metrics, confusion matrix, error analysis, and model comparison outputs.</li>
+          </ul>
+          <div class="card-links">
+            <a class="card-link" href="https://sentiment-analysis-imdb-kingkyli.streamlit.app/" target="_blank" rel="noopener">🚀 Live Demo</a>
+            <a class="card-link" href="https://github.com/KingKyli" target="_blank" rel="noopener">⌥ GitHub</a>
+          </div>
+        </div>
+
+        <!-- ── Instagram EDA ── -->
+        <div class="card fade-in-up">
+          <div class="card-tags">
+            <span class="card-tag">R</span>
+            <span class="card-tag">EDA</span>
+            <span class="card-tag">Classification</span>
+          </div>
+          <h3>Instagram Reach EDA &amp; Logistic Regression</h3>
+          <p>
+            Exploratory data analysis and interpretable binary classification on an Instagram
+            engagement dataset. Moves from data inspection and feature engineering to logistic
+            regression modelling, with emphasis on readable statistical reasoning and honest evaluation.
+          </p>
+          <p class="stack">
+            <strong>Stack:</strong> R, R Markdown, exploratory data analysis, logistic regression
+          </p>
+          <ul class="highlights">
+            <li>Full mini-report: objective, inspection, descriptive statistics, distribution &amp; correlation analysis, modelling, evaluation, conclusions, and limitations.</li>
+            <li>Hours since posting was the strongest statistically significant predictor; follower count had a weaker effect.</li>
+            <li>83.3% accuracy and AUC 0.727 on held-out test split, with explicit documentation of class imbalance and recall limitations.</li>
+          </ul>
+          <div class="card-links">
+            <a class="card-link" href="https://github.com/KingKyli/Data-Analysis-Project" target="_blank" rel="noopener">⌥ GitHub</a>
+          </div>
+        </div>
+
+        <!-- ── Aegean Blue Houses ── -->
+        <div class="card card-featured card-aegean fade-in-up">
+          <div class="card-tags">
+            <span class="card-tag">WordPress</span>
+            <span class="card-tag">Elementor</span>
+            <span class="card-tag">Custom CSS/HTML</span>
+            <span class="card-tag">WPML</span>
+            <span class="card-tag">UX</span>
+          </div>
+          <h3>Aegean Blue Houses — Website Optimization</h3>
+
+          <div class="subsection">
+            <p class="subsection-title">Overview</p>
+            <p>
+              Ongoing redesign and optimization of a live bilingual hospitality website for a
+              family-run accommodation business in Milos. The challenge is not a clean rebuild
+              but upgrading the experience while respecting real operational constraints inside
+              an existing production stack.
+            </p>
+          </div>
+
+          <div class="subsection">
+            <p class="subsection-title">Design Concept</p>
+            <ul class="tech-list">
+              <li>Premium homepage section hierarchy and calmer spacing to reinforce the property's boutique identity.</li>
+              <li>More polished room-discovery presentation and visual consistency across all listing pages.</li>
+              <li>Better direct-inquiry flow and contact-page clarity to drive conversions.</li>
+              <li>Bilingual structure (Greek &amp; English) that works seamlessly in both languages.</li>
+            </ul>
+          </div>
+
+          <div class="subsection">
+            <p class="subsection-title">Technical Details</p>
+            <ul class="tech-list">
+              <li><strong>Platform:</strong> WordPress with Elementor page builder</li>
+              <li><strong>Plugins:</strong> Contact Form 7, MotoPress Hotel Booking, WPML</li>
+              <li><strong>Custom work:</strong> HTML &amp; CSS overrides wherever the visual builder was insufficient</li>
+              <li><strong>Focus:</strong> Aesthetics, responsiveness, and conversion — not feature bloat</li>
+            </ul>
+          </div>
+
+          <!-- image placeholders -->
+          <div class="img-gallery" style="grid-template-columns:1fr 1fr; margin:1.25rem 0;">
+            <div class="img-placeholder">
+              <span class="cam">📷</span>
+              <span class="img-label">Homepage — Editorial Section</span>
+            </div>
+            <div class="img-placeholder">
+              <span class="cam">📷</span>
+              <span class="img-label">Room Discovery &amp; Contact Flow</span>
+            </div>
+          </div>
+
+          <div class="subsection">
+            <p class="subsection-title">Outcomes / Results</p>
+            <ul class="tech-list">
+              <li>Improved visual hierarchy and premium feel across the entire site.</li>
+              <li>Cleaner inquiry usability leading to a more direct user-to-booking path.</li>
+              <li>Consistent room-page experience in both languages with proper WPML integration.</li>
+              <li>Demonstrated ability to collaborate with the constraints of a live, real-business production setup.</li>
+            </ul>
+          </div>
+
+          <div class="card-links">
+            <a class="card-link" href="https://aegeanbluehouses.com/" target="_blank" rel="noopener">🌐 Live Site</a>
+          </div>
+        </div>
+
+      </div><!-- /projects-grid -->
+    </div>
+  </section>
+
+  <!-- ─── Footer ─────────────────────────────────────────── -->
+  <footer>
+    <p><strong>Sotirios Kylintireas-Xydous</strong> &nbsp;·&nbsp; &copy; 2025</p>
+  </footer>
+
+  <!-- ─── Back to top ────────────────────────────────────── -->
+  <button id="back-to-top" title="Back to top" aria-label="Back to top">↑</button>
+
+  <!-- ─── Inline scripts ────────────────────────────────── -->
+  <script>
+    // Back to top visibility
+    const btn = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      btn.classList.toggle('show', window.scrollY > 400);
+    });
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Scroll-triggered fadeInUp
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
