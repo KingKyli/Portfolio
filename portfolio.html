@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-    /* ─── Reset & base ───────────────────────────────────── */
+    /* Reset & base  */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -39,7 +39,7 @@
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* ─── Navbar ─────────────────────────────────────────── */
+    /*  Navbar  */
     nav {
       position: sticky;
       top: 0;
@@ -78,7 +78,7 @@
     }
     .nav-links a:hover { color: var(--accent); text-decoration: none; }
 
-    /* ─── Sections common ───────────────────────────────── */
+    /* Sections common */
     section { padding: 80px 2rem; }
     .container { max-width: 1100px; margin: 0 auto; }
 
@@ -98,7 +98,7 @@
       margin-bottom: 2.5rem;
     }
 
-    /* ─── Scroll animations ──────────────────────────────── */
+    /* Scroll animations */
     .fade-in-up {
       opacity: 0;
       transform: translateY(30px);
@@ -174,7 +174,7 @@
     }
     .hero-link.secondary:hover { background: rgba(255,255,255,0.15); }
 
-    /* ─── About ──────────────────────────────────────────── */
+    /* About */
     #about { background: var(--surface); }
     .about-text {
       font-size: 1.08rem;
@@ -197,7 +197,7 @@
       font-weight: 500;
     }
 
-    /* ─── Skills ─────────────────────────────────────────── */
+    /*Skills  */
     #skills { background: var(--bg); }
     .skills-grid {
       display: grid;
@@ -233,7 +233,7 @@
       color: #fff;
     }
 
-    /* ─── Education ──────────────────────────────────────── */
+    /*Education */
     #education { background: var(--surface); }
     .timeline { position: relative; padding-left: 1.5rem; }
     .timeline::before {
@@ -281,7 +281,7 @@
       margin-top: 0.2rem;
     }
 
-    /* ─── Projects ───────────────────────────────────────── */
+    /* Projects */
     #projects { background: var(--bg); }
     .projects-grid {
       display: grid;
@@ -442,7 +442,7 @@
       letter-spacing: 0.04em;
     }
 
-    /* ── Aegean Blue card ── */
+    /*  Aegean Blue card  */
     .card-aegean {
       border-left: 5px solid var(--aegean);
       background: #f4f9fc;
@@ -499,7 +499,7 @@
       top: 0.35em;
     }
 
-    /* ─── Back to top button ─────────────────────────────── */
+    /*  Back to top button  */
     #back-to-top {
       position: fixed;
       bottom: 2rem;
@@ -527,7 +527,7 @@
     }
     #back-to-top:hover { transform: translateY(-3px); }
 
-    /* ─── Footer ─────────────────────────────────────────── */
+    /*  Footer  */
     footer {
       background: var(--navy);
       color: #8aa8c8;
@@ -537,7 +537,7 @@
     }
     footer strong { color: #d0e4f4; }
 
-    /* ─── Responsive ─────────────────────────────────────── */
+    /*  Responsive  */
     @media (max-width: 700px) {
       nav { padding: 0 1rem; }
       .nav-links { gap: 1rem; }
@@ -552,7 +552,7 @@
     }
 
 
-    /* Final portfolio polish */
+   
     :root {
       --accent: #2f7ec4;
       --aegean: #146a82;
@@ -740,8 +740,8 @@
   </style>
 </head>
 <body>
-
-  <!-- ─── Navbar ─────────────────────────────────────────── -->
+/* Addtional Changes */
+  <!-- Navbar -->
   <nav>
     <div class="nav-inner">
       <a class="nav-logo" href="#hero">SK</a>
@@ -754,7 +754,7 @@
     </div>
   </nav>
 
-  <!-- ─── Hero ───────────────────────────────────────────── -->
+  <!--  Hero -->
   <section id="hero">
     <div class="container">
       <p class="hero-eyebrow">Technical Portfolio</p>
@@ -779,7 +779,7 @@
     </div>
   </section>
 
-  <!-- ─── About ──────────────────────────────────────────── -->
+  <!--  About  -->
   <section id="about">
     <div class="container fade-in-up">
       <p class="section-label">About</p>
@@ -800,7 +800,7 @@
     </div>
   </section>
 
-  <!-- ─── Skills ─────────────────────────────────────────── -->
+  <!-- Skills  -->
   <section id="skills">
     <div class="container fade-in-up">
       <p class="section-label">Skills</p>
@@ -857,7 +857,7 @@
     </div>
   </section>
 
-  <!-- ─── Education ──────────────────────────────────────── -->
+  <!-- Education  -->
   <section id="education">
     <div class="container fade-in-up">
       <p class="section-label">Education</p>
@@ -877,7 +877,7 @@
     </div>
   </section>
 
-  <!-- ─── Projects ───────────────────────────────────────── -->
+  <!-- Projects -->
   <section id="projects">
     <div class="container">
       <p class="section-label">Selected Projects</p>
@@ -885,7 +885,7 @@
 
       <div class="projects-grid">
 
-        <!-- ── GridWorld — FEATURED ── -->
+        <!--  GridWorld — FEATURED  -->
         <div class="card card-featured card-gridworld fade-in-up">
           <div class="card-header">
             <div class="card-header-left">
@@ -950,7 +950,7 @@
           </div>
         </div>
 
-        <!-- ── Distributed Food Ordering System ── -->
+        <!--Distributed Food Ordering System  -->
         <div class="card fade-in-up">
           <div class="card-tags">
             <span class="card-tag">Android</span>
@@ -977,7 +977,7 @@
           </div>
         </div>
 
-        <!-- ── IMDB Sentiment Analysis ── -->
+        <!--IMDB Sentiment Analysis  -->
         <div class="card fade-in-up">
           <div class="card-tags">
             <span class="card-tag">ML</span>
@@ -1005,7 +1005,7 @@
           </div>
         </div>
 
-        <!-- ── Instagram EDA ── -->
+        <!-- Instagram EDA  -->
         <div class="card fade-in-up">
           <div class="card-tags">
             <span class="card-tag">R</span>
@@ -1031,7 +1031,7 @@
           </div>
         </div>
 
-        <!-- ── Aegean Blue Houses — FEATURED ── -->
+        <!-- Aegean Blue Houses — FEATURED  -->
         <div class="card card-featured card-aegean-blue-houses fade-in-up">
           <div class="card-header">
             <div class="card-header-left">
@@ -1090,15 +1090,15 @@
     </div>
   </section>
 
-  <!-- ─── Footer ─────────────────────────────────────────── -->
+  <!-- Footer  -->
   <footer>
     <p><strong>Sotirios Kylintireas-Xydous</strong> &nbsp;·&nbsp; &copy; 2025</p>
   </footer>
 
-  <!-- ─── Back to top ────────────────────────────────────── -->
+  <!-- Back to top -->
   <button id="back-to-top" title="Back to top" aria-label="Back to top">↑</button>
 
-  <!-- ─── Inline scripts ────────────────────────────────── -->
+  <!--  Inline scripts  -->
   <script>
     // Back to top visibility
     const btn = document.getElementById('back-to-top');
